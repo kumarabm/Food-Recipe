@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Login from '../src/components/Login';
 import Recipe from '../src/components/recipe';
 import '../src/App.css';
+import Navbar from './components/Navbar';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
