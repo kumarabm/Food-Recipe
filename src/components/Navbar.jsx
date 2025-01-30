@@ -3,12 +3,17 @@ import { FaHome, FaHeart, FaInfoCircle, FaSearch } from 'react-icons/fa';
 import '../style/Navbar.css';
 
 const Navbar = ({ onSearch }) => {
-  const [searchText, setSearchText] = useState('');
+ const [searchTerm, setSearchTerm] = useState(''); 
+ const [query, setQuery] = useState('burger');
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    onSearch(searchText);
-    setSearchText('');
+  const handleSearchInput = (event) => {
+    setSearchTerm(event.target.value); // Update search term state
+  };
+
+  // Handle the actual search when user submits the search form
+  const handleSearch = (event) => {
+    event.preventDefault(); // Prevent page reload on form submit
+    setQuery(searchTerm); // Update query with search term
   };
 
   return (
@@ -32,8 +37,8 @@ const Navbar = ({ onSearch }) => {
           <input
             type="text"
             className="navbar__search-input"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            value={searchTerm}
+            onChange={handleSearchInput}
             placeholder="Search for a recipe"
           />
           <button type="submit" className="navbar__search-button">
